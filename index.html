@@ -45,15 +45,9 @@
         }
 
         @keyframes float {
-            0% {
-                transform: translateY(0px);
-            }
-            50% {
-                transform: translateY(-12px);
-            }
-            100% {
-                transform: translateY(0px);
-            }
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-12px); }
+            100% { transform: translateY(0px); }
         }
 
         h1 {
@@ -157,13 +151,8 @@
             box-shadow: 0 0 15px rgba(0, 0, 0, 0.8);
         }
 
-        .card-killer {
-            border-color: #562a2a;
-        }
-
-        .card-upcoming {
-            border-color: #ff9e00;
-        }
+        .card-killer { border-color: #562a2a; }
+        .card-upcoming { border-color: #ff9e00; }
 
         h2 {
             color: #e0aaff;
@@ -180,23 +169,9 @@
             text-transform: uppercase;
         }
 
-        .tag-survivor {
-            background: #2a085c;
-            color: #00f0ff;
-            border: 1px solid #00f0ff;
-        }
-
-        .tag-killer {
-            background: #4a0000;
-            color: #ff4d4d;
-            border: 1px solid #ff0000;
-        }
-
-        .tag-upcoming {
-            background: #4a3600;
-            color: #ffcb4d;
-            border: 1px solid #ff9e00;
-        }
+        .tag-survivor { background: #2a085c; color: #00f0ff; border: 1px solid #00f0ff; }
+        .tag-killer { background: #4a0000; color: #ff4d4d; border: 1px solid #ff0000; }
+        .tag-upcoming { background: #4a3600; color: #ffcb4d; border: 1px solid #ff9e00; }
 
         h3 {
             color: #ff9e00;
@@ -205,9 +180,7 @@
             text-shadow: 0 0 8px #ff9e00;
         }
 
-        ul {
-            list-style: none;
-        }
+        ul { list-style: none; }
 
         li {
             background: rgba(40, 20, 60, 0.6);
@@ -217,26 +190,12 @@
             border-radius: 5px;
         }
 
-        .card-killer li {
-            border-left-color: #ff0000;
-            background: rgba(60, 20, 20, 0.6);
-        }
+        .card-killer li { border-left-color: #ff0000; background: rgba(60, 20, 20, 0.6); }
+        .card-upcoming li { border-left-color: #ff9e00; }
 
-        .card-upcoming li {
-            border-left-color: #ff9e00;
-        }
-
-        li strong {
-            color: #00f0ff;
-        }
-
-        .card-killer li strong {
-            color: #ff4d4d;
-        }
-
-        .card-upcoming li strong {
-            color: #ffcb4d;
-        }
+        li strong { color: #00f0ff; }
+        .card-killer li strong { color: #ff4d4d; }
+        .card-upcoming li strong { color: #ffcb4d; }
 
         .passive-box {
             background: rgba(123, 44, 191, 0.25);
@@ -264,6 +223,57 @@
             margin-left: 5px;
         }
 
+        /* SOCIAL & GAME LINKS BUTTONS */
+        .links-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 14px 20px;
+            border-radius: 8px;
+            font-weight: bold;
+            text-decoration: none;
+            color: #fff;
+            text-transform: uppercase;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 12px rgba(0,0,0,0.5);
+        }
+
+        .btn-discord {
+            background: #5865F2;
+            border: 1px solid #7983f5;
+        }
+        .btn-discord:hover {
+            background: #4752c4;
+            box-shadow: 0 0 15px #5865F2;
+            transform: translateY(-3px);
+        }
+
+        .btn-youtube {
+            background: #FF0000;
+            border: 1px solid #ff4d4d;
+        }
+        .btn-youtube:hover {
+            background: #cc0000;
+            box-shadow: 0 0 15px #FF0000;
+            transform: translateY(-3px);
+        }
+
+        .btn-game {
+            background: #333;
+            border: 1px solid #555;
+            color: #888;
+            cursor: not-allowed;
+        }
+
         footer {
             text-align: center;
             margin-top: 50px;
@@ -287,18 +297,49 @@
             </div>
         </header>
 
-        <!-- NAVIGATION TABS -->
         <div class="nav-tabs">
-            <button class="tab-btn active" onclick="openPage('survivors', this)">🛡️ Survivors</button>
+            <button class="tab-btn active" onclick="openPage('home', this)">🏠 Home</button>
+            <button class="tab-btn" onclick="openPage('survivors', this)">🛡️ Survivors</button>
             <button class="tab-btn" onclick="openPage('killers', this)">🩸 Killers</button>
             <button class="tab-btn" onclick="openPage('upcoming', this)">🌟 Upcoming</button>
         </div>
 
-        <!-- ================= PAGE 1: SURVIVORS ================= -->
-        <div id="survivors" class="wiki-page active">
+        <div id="home" class="wiki-page active">
+            <div class="section-header">🏠 WELCOME TO THE OFFICIAL WIKI</div>
+
+            <div class="card">
+                <h2>🎮 About the Game</h2>
+                <p><strong>Sonic.EXE Chaos Disasters</strong> is an intense asymmetric <strong>1 vs All multiplayer experience</strong> heavily inspired by the Sonic the Hedgehog universe. One player takes the role of a deadly <strong>Killer</strong>, while the rest play as agile <strong>Survivors</strong> aiming to outsmart, distract, and survive the nightmare.</p>
+                <br>
+                <p>Beyond traditional Sonic characters, the game features special original and crossover characters, custom skin kits, and unique gameplay mechanics running on the <strong>Aeternus Engine</strong>.</p>
+            </div>
+
+            <div class="card">
+                <h2>📢 Official Database Notice</h2>
+                <p>This is the <strong>Official Wiki</strong> for Sonic.EXE Chaos Disasters! All movesets, character stats, skin abilities, and upcoming patches will be regularly updated here by the development team whenever new updates drop.</p>
+            </div>
+
+            <div class="card">
+                <h2>🔗 Community & Game Links</h2>
+                <p>Join the community, follow the developer, and stay updated on game progress:</p>
+
+                <div class="links-grid">
+                    <a href="https://discord.gg/SKzTgNRcva" target="_blank" class="social-btn btn-discord">
+                        💬 Discord Group
+                    </a>
+                    <a href="https://www.youtube.com/@Sg1CinosOFC" target="_blank" class="social-btn btn-youtube">
+                        ▶️ Owner's YouTube
+                    </a>
+                    <div class="social-btn btn-game">
+                        🚫 Play Game (Not Released Yet)
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="survivors" class="wiki-page">
             <div class="section-header">🛡️ SURVIVORS</div>
 
-            <!-- SONIC -->
             <div class="card character-card">
                 <h2>Sonic</h2>
                 <span class="role-tag tag-survivor">Survivor • Speedster</span>
@@ -312,7 +353,6 @@
                 </ul>
             </div>
 
-            <!-- SILVER -->
             <div class="card character-card">
                 <h2>Silver</h2>
                 <span class="role-tag tag-survivor">Survivor • Psychokinetic Support</span>
@@ -327,11 +367,9 @@
             </div>
         </div>
 
-        <!-- ================= PAGE 2: KILLERS ================= -->
         <div id="killers" class="wiki-page">
             <div class="section-header" style="color: #ff4d4d; border-bottom-color: #ff0000;">🩸 KILLERS</div>
 
-            <!-- KOLOSSOS -->
             <div class="card card-killer character-card">
                 <h2>Kolossos</h2>
                 <span class="role-tag tag-killer">Killer • Heavy Brute</span>
@@ -362,17 +400,14 @@
             </div>
         </div>
 
-        <!-- ================= PAGE 3: UPCOMING SURVIVORS ================= -->
         <div id="upcoming" class="wiki-page">
             <div class="section-header" style="color: #ffcb4d; border-bottom-color: #ff9e00;">🌟 UPCOMING SURVIVORS</div>
 
-            <!-- STARLAXY -->
             <div class="card card-upcoming character-card">
                 <h2>Starlaxy</h2>
                 <span class="role-tag tag-upcoming">Upcoming Survivor • Utility & Support</span>
                 <p>A futuristic survivor equipped with cosmic and spatio-temporal technology to manipulate position and assist teammates.</p>
 
-                <!-- PASSIVE ABILITY BOX -->
                 <div class="passive-box">
                     <h4>🌀 Passive Ability: Custom Skin Arsenal</h4>
                     <p>Every single skin equipped by Starlaxy grants a completely unique moveset and visual theme. While each kit follows the core default playstyle structure (Teleport / Dash / Stealth / Slow), every skin features custom mechanics and specialized effects.</p>
@@ -427,7 +462,6 @@
         </footer>
     </div>
 
-    <!-- TAB & SEARCH SCRIPTS -->
     <script>
         function openPage(pageName, btnElement) {
             let pages = document.getElementsByClassName("wiki-page");
