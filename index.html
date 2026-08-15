@@ -24,7 +24,7 @@
             margin: 0 auto;
         }
 
-        /* HEADER & LOGO */
+        /* HEADER & FLOATING LOGO */
         header {
             text-align: center;
             padding: 30px 15px;
@@ -41,6 +41,19 @@
             max-height: 180px;
             filter: drop-shadow(0 0 15px #ff0055);
             margin-bottom: 15px;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-12px);
+            }
+            100% {
+                transform: translateY(0px);
+            }
         }
 
         h1 {
@@ -57,7 +70,7 @@
             margin-top: 5px;
         }
 
-        /* SEARCH & NAVIGATION */
+        /* SEARCH BAR */
         .search-container {
             margin-top: 20px;
             display: flex;
@@ -82,56 +95,56 @@
             box-shadow: 0 0 15px #00f0ff;
         }
 
-        .nav-buttons {
+        /* NAVIGATION TABS */
+        .nav-tabs {
             display: flex;
-            gap: 12px;
+            gap: 10px;
             justify-content: center;
             flex-wrap: wrap;
             margin: 25px 0;
         }
 
-        .btn {
-            background: linear-gradient(45deg, #7b2cbf, #ff0055);
-            color: #fff;
-            padding: 12px 24px;
-            border: none;
+        .tab-btn {
+            background: rgba(40, 20, 60, 0.8);
+            color: #aaa;
+            padding: 12px 22px;
+            border: 2px solid #3c2a56;
             border-radius: 8px;
-            font-size: 1rem;
+            font-size: 0.95rem;
             cursor: pointer;
             font-weight: bold;
             text-transform: uppercase;
-            box-shadow: 0 0 15px rgba(255, 0, 85, 0.4);
             transition: all 0.3s ease;
-            text-decoration: none;
         }
 
-        .btn:hover {
-            transform: scale(1.05);
-            box-shadow: 0 0 20px #00f0ff;
-            background: linear-gradient(45deg, #00f0ff, #7b2cbf);
+        .tab-btn:hover {
+            color: #fff;
+            border-color: #7b2cbf;
         }
 
-        .btn-killer {
-            background: linear-gradient(45deg, #800000, #ff0000);
-            box-shadow: 0 0 15px rgba(255, 0, 0, 0.4);
+        .tab-btn.active {
+            background: linear-gradient(45deg, #7b2cbf, #ff0055);
+            color: #fff;
+            border-color: #ff0055;
+            box-shadow: 0 0 15px rgba(255, 0, 85, 0.5);
         }
 
-        .btn-killer:hover {
-            background: linear-gradient(45deg, #ff0000, #ff5500);
-            box-shadow: 0 0 20px #ff5500;
+        /* PAGE SECTIONS */
+        .wiki-page {
+            display: none;
         }
 
-        /* SECTION HEADERS */
+        .wiki-page.active {
+            display: block;
+        }
+
         .section-header {
             font-size: 1.8rem;
             color: #00f0ff;
             border-bottom: 2px solid #ff0055;
             padding-bottom: 8px;
-            margin: 35px 0 20px 0;
+            margin: 15px 0 20px 0;
             text-shadow: 0 0 10px #00f0ff;
-            display: flex;
-            align-items: center;
-            gap: 10px;
         }
 
         /* CARDS */
@@ -142,24 +155,19 @@
             padding: 25px;
             margin-bottom: 25px;
             box-shadow: 0 0 15px rgba(0, 0, 0, 0.8);
-            transition: border-color 0.3s ease;
-        }
-
-        .card:hover {
-            border-color: #7b2cbf;
         }
 
         .card-killer {
             border-color: #562a2a;
         }
 
-        .card-killer:hover {
-            border-color: #ff0000;
+        .card-upcoming {
+            border-color: #ff9e00;
         }
 
         h2 {
             color: #e0aaff;
-            margin-bottom: 10px;
+            margin-bottom: 8px;
         }
 
         .role-tag {
@@ -182,6 +190,12 @@
             background: #4a0000;
             color: #ff4d4d;
             border: 1px solid #ff0000;
+        }
+
+        .tag-upcoming {
+            background: #4a3600;
+            color: #ffcb4d;
+            border: 1px solid #ff9e00;
         }
 
         h3 {
@@ -208,12 +222,46 @@
             background: rgba(60, 20, 20, 0.6);
         }
 
+        .card-upcoming li {
+            border-left-color: #ff9e00;
+        }
+
         li strong {
             color: #00f0ff;
         }
 
         .card-killer li strong {
             color: #ff4d4d;
+        }
+
+        .card-upcoming li strong {
+            color: #ffcb4d;
+        }
+
+        .passive-box {
+            background: rgba(123, 44, 191, 0.25);
+            border: 2px solid #7b2cbf;
+            border-radius: 8px;
+            padding: 15px;
+            margin: 15px 0;
+            box-shadow: 0 0 10px rgba(123, 44, 191, 0.3);
+        }
+
+        .passive-box h4 {
+            color: #00f0ff;
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+            text-shadow: 0 0 5px #00f0ff;
+        }
+
+        .stat-badge {
+            display: inline-block;
+            background: #12091f;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            color: #aaa;
+            margin-left: 5px;
         }
 
         footer {
@@ -235,114 +283,170 @@
             <p class="subtitle">Sonic.EXE Chaos Disasters • Database & Movesets</p>
 
             <div class="search-container">
-                <input type="text" id="searchInput" onkeyup="filterWiki()" class="search-box" placeholder="Search character, ability, or skin...">
+                <input type="text" id="searchInput" onkeyup="filterWiki()" class="search-box" placeholder="Search character, ability, or stat...">
             </div>
         </header>
 
-        <!-- NAVIGATION -->
-        <div class="nav-buttons">
-            <a href="#survivors" class="btn">Survivors</a>
-            <a href="#killers" class="btn btn-killer">Killers</a>
-            <a href="#about" class="btn">About Project</a>
+        <!-- NAVIGATION TABS -->
+        <div class="nav-tabs">
+            <button class="tab-btn active" onclick="openPage('survivors', this)">🛡️ Survivors</button>
+            <button class="tab-btn" onclick="openPage('killers', this)">🩸 Killers</button>
+            <button class="tab-btn" onclick="openPage('upcoming', this)">🌟 Upcoming</button>
         </div>
 
-        <!-- ABOUT SECTION -->
-        <div id="about" class="card">
-            <h2>📖 Welcome to the Wiki</h2>
-            <p>Welcome to the official database for <strong>Sonic.EXE Chaos Disasters</strong>! Explore details, abilities, movesets, and custom skin mechanics for all Survivors and Killers running on the Aeternus Engine.</p>
+        <!-- ================= PAGE 1: SURVIVORS ================= -->
+        <div id="survivors" class="wiki-page active">
+            <div class="section-header">🛡️ SURVIVORS</div>
+
+            <!-- SONIC -->
+            <div class="card character-card">
+                <h2>Sonic</h2>
+                <span class="role-tag tag-survivor">Survivor • Speedster</span>
+                <p>The iconic blue hedgehog using his high mobility to evade danger and protect the team.</p>
+                
+                <h3>⚡ Abilities</h3>
+                <ul>
+                    <li>
+                        <strong>Homing Attack:</strong> Launches forward to hit the Killer, applying a <strong>5-second stun</strong>.
+                    </li>
+                </ul>
+            </div>
+
+            <!-- SILVER -->
+            <div class="card character-card">
+                <h2>Silver</h2>
+                <span class="role-tag tag-survivor">Survivor • Psychokinetic Support</span>
+                <p>A telekinetic hedgehog from the future who uses his abilities to control the battlefield from a distance.</p>
+                
+                <h3>🔮 Abilities</h3>
+                <ul>
+                    <li>
+                        <strong>Psychokinetic Rock:</strong> Throws a levitated rock at the Killer, causing a <strong>stun</strong> on hit.
+                    </li>
+                </ul>
+            </div>
         </div>
 
-        <!-- SURVIVORS SECTION -->
-        <div id="survivors" class="section-header">
-            🛡️ SURVIVORS
+        <!-- ================= PAGE 2: KILLERS ================= -->
+        <div id="killers" class="wiki-page">
+            <div class="section-header" style="color: #ff4d4d; border-bottom-color: #ff0000;">🩸 KILLERS</div>
+
+            <!-- KOLOSSOS -->
+            <div class="card card-killer character-card">
+                <h2>Kolossos</h2>
+                <span class="role-tag tag-killer">Killer • Heavy Brute</span>
+                <p>A massive, unstoppable force that crushes Survivors through raw strength and relentless offensive pressure.</p>
+
+                <h3>🩸 Abilities & Moveset</h3>
+                <ul>
+                    <li>
+                        <strong>Charge:</strong> Dashes forward aggressively to slam into Survivors.
+                        <span class="stat-badge">Damage: 40</span>
+                        <span class="stat-badge">Cooldown: 20s</span>
+                    </li>
+                    <li>
+                        <strong>Slash:</strong> A swift melee swipe attack.
+                        <span class="stat-badge">Damage: 25</span>
+                        <span class="stat-badge">Cooldown: 3s</span>
+                    </li>
+                    <li>
+                        <strong>Grab:</strong> Grabs a Survivor, holds them, and throws them anywhere on the map.
+                        <span class="stat-badge">Damage: 10</span>
+                        <span class="stat-badge">Cooldown: 60s</span>
+                    </li>
+                    <li>
+                        <strong>Laugh:</strong> Taunts nearby Survivors with an intimidating laugh.
+                        <span class="stat-badge">Utility / Taunt</span>
+                    </li>
+                </ul>
+            </div>
         </div>
 
-        <!-- STARLAXY CARD -->
-        <div class="card character-card">
-            <h2>Starlaxy</h2>
-            <span class="role-tag tag-survivor">Survivor • Utility & Support</span>
-            <p>Starlaxy is a mobility and utility-focused Survivor. Equipped with cosmic technology and spatio-temporal manipulators, she excels at tricking the Killer and granting valuable time for her teammates to complete objectives.</p>
+        <!-- ================= PAGE 3: UPCOMING SURVIVORS ================= -->
+        <div id="upcoming" class="wiki-page">
+            <div class="section-header" style="color: #ffcb4d; border-bottom-color: #ff9e00;">🌟 UPCOMING SURVIVORS</div>
 
-            <h3>✨ Skin Movesets</h3>
+            <!-- STARLAXY -->
+            <div class="card card-upcoming character-card">
+                <h2>Starlaxy</h2>
+                <span class="role-tag tag-upcoming">Upcoming Survivor • Utility & Support</span>
+                <p>A futuristic survivor equipped with cosmic and spatio-temporal technology to manipulate position and assist teammates.</p>
 
-            <h4>💜 1. Default (Cosmic)</h4>
-            <ul>
-                <li><strong>Stellar Mark:</strong> Places a glowing mark and teleports back to it upon reactivation.</li>
-                <li><strong>Comet Leap:</strong> A fast dash forward leaving a trail of stardust.</li>
-                <li><strong>Cosmic Dust:</strong> Conceals footsteps and dampens sound for 4 seconds.</li>
-                <li><strong>Cosmic Pulse:</strong> Slows down nearby Killers for 1.5 seconds.</li>
-            </ul>
+                <!-- PASSIVE ABILITY BOX -->
+                <div class="passive-box">
+                    <h4>🌀 Passive Ability: Custom Skin Arsenal</h4>
+                    <p>Every single skin equipped by Starlaxy grants a completely unique moveset and visual theme. While each kit follows the core default playstyle structure (Teleport / Dash / Stealth / Slow), every skin features custom mechanics and specialized effects.</p>
+                </div>
 
-            <h4>👑 2. Milestone 4 (Dark Fantasy)</h4>
-            <ul>
-                <li><strong>Penumbra Mark:</strong> Shadow mark that dissolves the character into purple smoke.</li>
-                <li><strong>Obscure Rush:</strong> Charges forward while opening dark energy wings.</li>
-                <li><strong>Shadow Cloak:</strong> Envelops in shadows, eliminating noise for 4 seconds.</li>
-                <li><strong>Crystal Spikes:</strong> Launches purple shards on the ground that slow down the Killer.</li>
-            </ul>
+                <h3>✨ Unique Skin Movesets</h3>
 
-            <h4>💻 3. Cybernetica (Hacker)</h4>
-            <ul>
-                <li><strong>Restore Point:</strong> Holographic checkpoint resetting map position.</li>
-                <li><strong>Data Dash:</strong> Dashes with code lines and cyan cubes.</li>
-                <li><strong>Invis-Protocol:</strong> Optical camouflage hiding tracks for 4 seconds.</li>
-                <li><strong>Glitch Pulse:</strong> Distorts nearby Killer's vision for 1.5 seconds.</li>
-            </ul>
+                <h4>💜 1. Default (Cosmic)</h4>
+                <ul>
+                    <li><strong>Stellar Mark:</strong> Places a mark and teleports back upon reactivation.</li>
+                    <li><strong>Comet Leap:</strong> Dash forward leaving a stardust trail.</li>
+                    <li><strong>Cosmic Dust:</strong> Hides footsteps and dampens sound for 4s.</li>
+                    <li><strong>Cosmic Pulse:</strong> Slows down nearby Killers for 1.5s.</li>
+                </ul>
 
-            <h4>🃏 4. Jevil Cosplay (Chaotic)</h4>
-            <ul>
-                <li><strong>Hat Trick:</strong> Swaps position with a floating top hat.</li>
-                <li><strong>Insane Pirouette:</strong> Spiral dash with cards falling around.</li>
-                <li><strong>Smoke Screen:</strong> Stage smoke with confetti hiding footsteps for 4 seconds.</li>
-                <li><strong>Surprise Box:</strong> Confetti trap applying a 1.5s slow effect.</li>
-            </ul>
+                <h4>👑 2. Milestone 4 (Dark Fantasy)</h4>
+                <ul>
+                    <li><strong>Penumbra Mark:</strong> Shadow mark that turns character into purple smoke.</li>
+                    <li><strong>Obscure Rush:</strong> Dash forward opening dark wings.</li>
+                    <li><strong>Shadow Cloak:</strong> Mutes sounds completely for 4s.</li>
+                    <li><strong>Crystal Spikes:</strong> Drops purple shards that slow down the Killer.</li>
+                </ul>
 
-            <h4>🐴 5. Mambo Cosplay (Athletic)</h4>
-            <ul>
-                <li><strong>Track Checkpoint:</strong> Places a flag mark and returns to it when reactivated.</li>
-                <li><strong>Turf Sprint:</strong> Explosive sprint kicking up dust.</li>
-                <li><strong>Smooth Rhythm:</strong> Silent sprint hiding tracks for 4 seconds.</li>
-                <li><strong>Wind Barrier:</strong> Backward wind gust reducing Killer's speed.</li>
-            </ul>
-        </div>
+                <h4>💻 3. Cybernetica (Hacker)</h4>
+                <ul>
+                    <li><strong>Restore Point:</strong> Holographic checkpoint to reset position.</li>
+                    <li><strong>Data Dash:</strong> Dashes leaving glitch code lines.</li>
+                    <li><strong>Invis-Protocol:</strong> Camouflage hiding tracks for 4s.</li>
+                    <li><strong>Glitch Pulse:</strong> Distorts Killer's vision for 1.5s.</li>
+                </ul>
 
-        <!-- MORE SURVIVORS PLACEHOLDER -->
-        <div class="card character-card">
-            <h2>Sonic (Survivor)</h2>
-            <span class="role-tag tag-survivor">Survivor • High Speed</span>
-            <p>The fastest hedgehog alive. Uses raw agility and momentum to dodge attacks and outrun the Killer.</p>
-            <ul>
-                <li><strong>Spin Dash:</strong> Charges speed to break away from tight spots.</li>
-                <li><strong>Peel-Out:</strong> High-speed burst for quick escapes.</li>
-            </ul>
-        </div>
+                <h4>🃏 4. Jevil Cosplay (Chaotic)</h4>
+                <ul>
+                    <li><strong>Hat Trick:</strong> Swaps place with a floating hat.</li>
+                    <li><strong>Insane Pirouette:</strong> Spiral dash dropping playing cards.</li>
+                    <li><strong>Smoke Screen:</strong> Confetti smoke hiding footsteps for 4s.</li>
+                    <li><strong>Surprise Box:</strong> Confetti trap applying 1.5s slow.</li>
+                </ul>
 
-        <!-- KILLERS SECTION -->
-        <div id="killers" class="section-header" style="color: #ff4d4d; border-bottom-color: #ff0000;">
-            🩸 KILLERS
-        </div>
-
-        <!-- KILLER CARD PLACEHOLDER -->
-        <div class="card card-killer character-card">
-            <h2>Sonic.EXE</h2>
-            <span class="role-tag tag-killer">Killer • Aggressor</span>
-            <p>The demonic entity controlling the realm. Uses illusion, teleportation, and relentless speed to eliminate Survivors.</p>
-
-            <h3>🩸 Core Abilities</h3>
-            <ul>
-                <li><strong>Execution Dash:</strong> Charges forward at terrifying speeds to strike.</li>
-                <li><strong>Reality Distortion:</strong> Creates fake illusions and distorts Survivor HUDs.</li>
-                <li><strong>Blood Teleport:</strong> Teleports directly behind marked Survivors.</li>
-            </ul>
+                <h4>🐴 5. Mambo Cosplay (Athletic)</h4>
+                <ul>
+                    <li><strong>Track Checkpoint:</strong> Flag checkpoint to teleport back.</li>
+                    <li><strong>Turf Sprint:</strong> Explosive speed boost.</li>
+                    <li><strong>Smooth Rhythm:</strong> Silent sprint for 4s.</li>
+                    <li><strong>Wind Barrier:</strong> Gust of wind pushing/slowing the Killer.</li>
+                </ul>
+            </div>
         </div>
 
         <footer>
-            <p>Sonic.Exe Chaos Disasters • Fan Project Wiki</p>
+            <p>Sonic.Exe Chaos Disasters • Official Fan Wiki</p>
         </footer>
     </div>
 
-    <!-- SEARCH SCRIPT -->
+    <!-- TAB & SEARCH SCRIPTS -->
     <script>
+        function openPage(pageName, btnElement) {
+            let pages = document.getElementsByClassName("wiki-page");
+            for (let i = 0; i < pages.length; i++) {
+                pages[i].classList.remove("active");
+            }
+
+            let buttons = document.getElementsByClassName("tab-btn");
+            for (let i = 0; i < buttons.length; i++) {
+                buttons[i].classList.remove("active");
+            }
+
+            document.getElementById(pageName).classList.add("active");
+            btnElement.classList.add("active");
+
+            document.getElementById('searchInput').value = '';
+            filterWiki();
+        }
+
         function filterWiki() {
             let input = document.getElementById('searchInput').value.toLowerCase();
             let cards = document.getElementsByClassName('character-card');
