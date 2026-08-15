@@ -1,39 +1,365 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sonic.EXE Chaos Disasters - Starlaxy Wiki</title>
+    <title>Sonic.EXE Chaos Disasters - Official Wiki</title>
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Arial Black', 'Impact', sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
         body {
-            background: #05020a url('https://images.rbxcdn.com/101662869291512') no-repeat center center fixed;
-            background-size: cover;
+            background-color: #060309;
             color: #ffffff;
+            line-height: 1.6;
             padding: 20px;
         }
 
         .container {
-            max-width: 900px;
+            max-width: 1000px;
             margin: 0 auto;
         }
 
         /* HEADER & LOGO */
         header {
             text-align: center;
-            padding: 30px 10px;
-            background: rgba(15, 5, 25, 0.9);
+            padding: 30px 15px;
+            background: linear-gradient(180deg, #180828 0%, #060309 100%);
             border: 2px solid #ff0055;
-            box-shadow: 0 0 25px #ff0055;
+            box-shadow: 0 0 25px rgba(255, 0, 85, 0.4);
             border-radius: 15px;
-            margin-bottom: 30px;
+            margin-bottom: 25px;
         }
+
+        .logo {
+            max-width: 100%;
+            height: auto;
+            max-height: 180px;
+            filter: drop-shadow(0 0 15px #ff0055);
+            margin-bottom: 15px;
+        }
+
+        h1 {
+            font-size: 2.2rem;
+            color: #c77dff;
+            text-shadow: 0 0 10px #8a2be2, 0 0 20px #ff0055;
+            letter-spacing: 1px;
+        }
+
+        .subtitle {
+            font-size: 1rem;
+            color: #00f0ff;
+            text-shadow: 0 0 8px #00f0ff;
+            margin-top: 5px;
+        }
+
+        /* SEARCH & NAVIGATION */
+        .search-container {
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .search-box {
+            width: 100%;
+            max-width: 500px;
+            padding: 12px 20px;
+            border-radius: 25px;
+            border: 2px solid #7b2cbf;
+            background: #12091f;
+            color: #fff;
+            font-size: 1rem;
+            outline: none;
+            box-shadow: 0 0 10px rgba(123, 44, 191, 0.5);
+        }
+
+        .search-box:focus {
+            border-color: #00f0ff;
+            box-shadow: 0 0 15px #00f0ff;
+        }
+
+        .nav-buttons {
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin: 25px 0;
+        }
+
+        .btn {
+            background: linear-gradient(45deg, #7b2cbf, #ff0055);
+            color: #fff;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            cursor: pointer;
+            font-weight: bold;
+            text-transform: uppercase;
+            box-shadow: 0 0 15px rgba(255, 0, 85, 0.4);
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 20px #00f0ff;
+            background: linear-gradient(45deg, #00f0ff, #7b2cbf);
+        }
+
+        .btn-killer {
+            background: linear-gradient(45deg, #800000, #ff0000);
+            box-shadow: 0 0 15px rgba(255, 0, 0, 0.4);
+        }
+
+        .btn-killer:hover {
+            background: linear-gradient(45deg, #ff0000, #ff5500);
+            box-shadow: 0 0 20px #ff5500;
+        }
+
+        /* SECTION HEADERS */
+        .section-header {
+            font-size: 1.8rem;
+            color: #00f0ff;
+            border-bottom: 2px solid #ff0055;
+            padding-bottom: 8px;
+            margin: 35px 0 20px 0;
+            text-shadow: 0 0 10px #00f0ff;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        /* CARDS */
+        .card {
+            background: rgba(20, 10, 35, 0.92);
+            border: 2px solid #3c2a56;
+            border-radius: 12px;
+            padding: 25px;
+            margin-bottom: 25px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.8);
+            transition: border-color 0.3s ease;
+        }
+
+        .card:hover {
+            border-color: #7b2cbf;
+        }
+
+        .card-killer {
+            border-color: #562a2a;
+        }
+
+        .card-killer:hover {
+            border-color: #ff0000;
+        }
+
+        h2 {
+            color: #e0aaff;
+            margin-bottom: 10px;
+        }
+
+        .role-tag {
+            display: inline-block;
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            font-weight: bold;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+        }
+
+        .tag-survivor {
+            background: #2a085c;
+            color: #00f0ff;
+            border: 1px solid #00f0ff;
+        }
+
+        .tag-killer {
+            background: #4a0000;
+            color: #ff4d4d;
+            border: 1px solid #ff0000;
+        }
+
+        h3 {
+            color: #ff9e00;
+            margin-top: 15px;
+            margin-bottom: 10px;
+            text-shadow: 0 0 8px #ff9e00;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        li {
+            background: rgba(40, 20, 60, 0.6);
+            margin-bottom: 10px;
+            padding: 12px 15px;
+            border-left: 5px solid #ff0055;
+            border-radius: 5px;
+        }
+
+        .card-killer li {
+            border-left-color: #ff0000;
+            background: rgba(60, 20, 20, 0.6);
+        }
+
+        li strong {
+            color: #00f0ff;
+        }
+
+        .card-killer li strong {
+            color: #ff4d4d;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 50px;
+            padding: 20px;
+            color: #888;
+            font-size: 0.9rem;
+            border-top: 1px solid #221233;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <header>
+            <img src="logo.png" alt="Sonic.EXE Chaos Disasters Logo" class="logo">
+            <h1>OFFICIAL GAME WIKI</h1>
+            <p class="subtitle">Sonic.EXE Chaos Disasters • Database & Movesets</p>
+
+            <div class="search-container">
+                <input type="text" id="searchInput" onkeyup="filterWiki()" class="search-box" placeholder="Search character, ability, or skin...">
+            </div>
+        </header>
+
+        <!-- NAVIGATION -->
+        <div class="nav-buttons">
+            <a href="#survivors" class="btn">Survivors</a>
+            <a href="#killers" class="btn btn-killer">Killers</a>
+            <a href="#about" class="btn">About Project</a>
+        </div>
+
+        <!-- ABOUT SECTION -->
+        <div id="about" class="card">
+            <h2>📖 Welcome to the Wiki</h2>
+            <p>Welcome to the official database for <strong>Sonic.EXE Chaos Disasters</strong>! Explore details, abilities, movesets, and custom skin mechanics for all Survivors and Killers running on the Aeternus Engine.</p>
+        </div>
+
+        <!-- SURVIVORS SECTION -->
+        <div id="survivors" class="section-header">
+            🛡️ SURVIVORS
+        </div>
+
+        <!-- STARLAXY CARD -->
+        <div class="card character-card">
+            <h2>Starlaxy</h2>
+            <span class="role-tag tag-survivor">Survivor • Utility & Support</span>
+            <p>Starlaxy is a mobility and utility-focused Survivor. Equipped with cosmic technology and spatio-temporal manipulators, she excels at tricking the Killer and granting valuable time for her teammates to complete objectives.</p>
+
+            <h3>✨ Skin Movesets</h3>
+
+            <h4>💜 1. Default (Cosmic)</h4>
+            <ul>
+                <li><strong>Stellar Mark:</strong> Places a glowing mark and teleports back to it upon reactivation.</li>
+                <li><strong>Comet Leap:</strong> A fast dash forward leaving a trail of stardust.</li>
+                <li><strong>Cosmic Dust:</strong> Conceals footsteps and dampens sound for 4 seconds.</li>
+                <li><strong>Cosmic Pulse:</strong> Slows down nearby Killers for 1.5 seconds.</li>
+            </ul>
+
+            <h4>👑 2. Milestone 4 (Dark Fantasy)</h4>
+            <ul>
+                <li><strong>Penumbra Mark:</strong> Shadow mark that dissolves the character into purple smoke.</li>
+                <li><strong>Obscure Rush:</strong> Charges forward while opening dark energy wings.</li>
+                <li><strong>Shadow Cloak:</strong> Envelops in shadows, eliminating noise for 4 seconds.</li>
+                <li><strong>Crystal Spikes:</strong> Launches purple shards on the ground that slow down the Killer.</li>
+            </ul>
+
+            <h4>💻 3. Cybernetica (Hacker)</h4>
+            <ul>
+                <li><strong>Restore Point:</strong> Holographic checkpoint resetting map position.</li>
+                <li><strong>Data Dash:</strong> Dashes with code lines and cyan cubes.</li>
+                <li><strong>Invis-Protocol:</strong> Optical camouflage hiding tracks for 4 seconds.</li>
+                <li><strong>Glitch Pulse:</strong> Distorts nearby Killer's vision for 1.5 seconds.</li>
+            </ul>
+
+            <h4>🃏 4. Jevil Cosplay (Chaotic)</h4>
+            <ul>
+                <li><strong>Hat Trick:</strong> Swaps position with a floating top hat.</li>
+                <li><strong>Insane Pirouette:</strong> Spiral dash with cards falling around.</li>
+                <li><strong>Smoke Screen:</strong> Stage smoke with confetti hiding footsteps for 4 seconds.</li>
+                <li><strong>Surprise Box:</strong> Confetti trap applying a 1.5s slow effect.</li>
+            </ul>
+
+            <h4>🐴 5. Mambo Cosplay (Athletic)</h4>
+            <ul>
+                <li><strong>Track Checkpoint:</strong> Places a flag mark and returns to it when reactivated.</li>
+                <li><strong>Turf Sprint:</strong> Explosive sprint kicking up dust.</li>
+                <li><strong>Smooth Rhythm:</strong> Silent sprint hiding tracks for 4 seconds.</li>
+                <li><strong>Wind Barrier:</strong> Backward wind gust reducing Killer's speed.</li>
+            </ul>
+        </div>
+
+        <!-- MORE SURVIVORS PLACEHOLDER -->
+        <div class="card character-card">
+            <h2>Sonic (Survivor)</h2>
+            <span class="role-tag tag-survivor">Survivor • High Speed</span>
+            <p>The fastest hedgehog alive. Uses raw agility and momentum to dodge attacks and outrun the Killer.</p>
+            <ul>
+                <li><strong>Spin Dash:</strong> Charges speed to break away from tight spots.</li>
+                <li><strong>Peel-Out:</strong> High-speed burst for quick escapes.</li>
+            </ul>
+        </div>
+
+        <!-- KILLERS SECTION -->
+        <div id="killers" class="section-header" style="color: #ff4d4d; border-bottom-color: #ff0000;">
+            🩸 KILLERS
+        </div>
+
+        <!-- KILLER CARD PLACEHOLDER -->
+        <div class="card card-killer character-card">
+            <h2>Sonic.EXE</h2>
+            <span class="role-tag tag-killer">Killer • Aggressor</span>
+            <p>The demonic entity controlling the realm. Uses illusion, teleportation, and relentless speed to eliminate Survivors.</p>
+
+            <h3>🩸 Core Abilities</h3>
+            <ul>
+                <li><strong>Execution Dash:</strong> Charges forward at terrifying speeds to strike.</li>
+                <li><strong>Reality Distortion:</strong> Creates fake illusions and distorts Survivor HUDs.</li>
+                <li><strong>Blood Teleport:</strong> Teleports directly behind marked Survivors.</li>
+            </ul>
+        </div>
+
+        <footer>
+            <p>Sonic.Exe Chaos Disasters • Fan Project Wiki</p>
+        </footer>
+    </div>
+
+    <!-- SEARCH SCRIPT -->
+    <script>
+        function filterWiki() {
+            let input = document.getElementById('searchInput').value.toLowerCase();
+            let cards = document.getElementsByClassName('character-card');
+
+            for (let i = 0; i < cards.length; i++) {
+                let cardText = cards[i].innerText.toLowerCase();
+                if (cardText.includes(input)) {
+                    cards[i].style.display = "";
+                } else {
+                    cards[i].style.display = "none";
+                }
+            }
+        }
+    </script>
+
+</body>
+</html>
 
         .logo {
             max-width: 100%;
